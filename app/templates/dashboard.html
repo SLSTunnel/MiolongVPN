@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<p><a href="/server_info">Server Info & Protocol Ports</a></p>
+<p>Welcome, {{ user.username }}!</p>
+<p>Email: {{ user.email }}</p>
+<form method="post" action="/dashboard/set_language">
+    <label>Language:
+        <select name="language">
+            <option value="en" {% if user.language == 'en' %}selected{% endif %}>English</option>
+            <option value="es" {% if user.language == 'es' %}selected{% endif %}>Español</option>
+        </select>
+    </label>
+    <button type="submit">Change Language</button>
+</form>
+<ul>
+    <li><a href="/download/openvpn/{{ user.username }}">Download OpenVPN Config</a></li>
+    <li><a href="/download/v2ray/{{ user.username }}">View V2Ray Config</a></li>
+    <li><a href="/download/v2ray_config/{{ user.username }}">Download V2Ray Config File</a></li>
+    <li><a href="/download/shadowsocks_config/{{ user.username }}">Download Shadowsocks Config File</a></li>
+    <li><a href="/download/trojan_config/{{ user.username }}">Download Trojan Config File</a></li>
+    <li><a href="/download/wireguard/{{ user.username }}">Download WireGuard Config</a></li>
+    <li><a href="/download/l2tp/{{ user.username }}">View L2TP/IPsec Info</a></li>
+</ul>
+{% endblock %} 

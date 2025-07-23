@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MiolongVPN</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div style="background:#222;color:#fff;text-align:center;padding:8px 0;font-weight:bold;letter-spacing:1px;">By [Emperor]DevSupport</div>
+    <nav>
+        <a href="/">Home</a>
+        {% if user %}
+            <a href="/dashboard">Dashboard</a>
+            {% if user.is_admin %}<a href="/admin">Admin</a>{% endif %}
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html> 

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Server Protocols & Ports</h2>
+<table border="1">
+  <tr><th>Protocol</th><th>Port(s)</th><th>Status</th></tr>
+  {% for entry in protocols %}
+  <tr>
+    <td>{{ entry.name }}</td>
+    <td>{{ entry.ports }}</td>
+    <td>{{ entry.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %} 

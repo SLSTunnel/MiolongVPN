@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin Panel</h2>
+<h3>Users</h3>
+<table border="1">
+    <tr><th>ID</th><th>Username</th><th>Is Admin</th><th>Expiration</th><th>Last Login</th><th>Bandwidth</th><th>Actions</th></tr>
+    {% for u in users %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.is_admin }}</td>
+        <td>{{ u.expiration_date or '' }}</td>
+        <td>{{ u.last_login or '' }}</td>
+        <td>{{ get_bandwidth_usage(u.username) }}</td>
+        <td>
+            <form method="post" action="/admin/create_openvpn" style="display:inline">
+                <input type="hidden" name="username" value="{{ u.username }}">
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Create OpenVPN</button>
+            </form>
+            <form method="post" action="/admin/create_v2ray" style="display:inline">
+                <input type="hidden" name="username" value="{{ u.username }}">
+                <button type="submit">Create V2Ray</button>
+            </form>
+            <form method="post" action="/admin/create_wireguard" style="display:inline">
+                <input type="hidden" name="username" value="{{ u.username }}">
+                <button type="submit">Create WireGuard</button>
+            </form>
+            <form method="post" action="/admin/set_expiration" style="display:inline">
+                <input type="hidden" name="username" value="{{ u.username }}">
+                <input type="date" name="expiration_date">
+                <button type="submit">Set Expiration</button>
+            </form>
+            <form method="post" action="/admin/create_l2tp" style="display:inline">
+                <input type="hidden" name="username" value="{{ u.username }}">
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Create L2TP</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %} 
