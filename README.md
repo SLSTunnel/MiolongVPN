@@ -29,7 +29,7 @@ A full-featured VPN management web application with support for OpenVPN, V2Ray, 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/MiolongVPN.git
+git clone https://github.com/SLSTunnel/MiolongVPN.git
 cd MiolongVPN
 ```
 
