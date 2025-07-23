@@ -12,7 +12,7 @@ RUN apt-get update && \
 RUN mkdir -p /opt/v2ray && \
     curl -L -o /opt/v2ray/v2ray.zip https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip && \
     unzip /opt/v2ray/v2ray.zip -d /opt/v2ray && \
-    chmod +x /opt/v2ray/v2ray /opt/v2ray/v2ctl
+    chmod +x /opt/v2ray/v2ray*
 
 # Set up app directory
 WORKDIR /app
